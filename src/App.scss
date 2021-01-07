@@ -1,5 +1,23 @@
 .App {
-  text-align: center;
+  .board {
+    width: 60%;
+    height: 80vh;
+    margin: 0 auto;
+    border-spacing: 0;
+
+    .slot {
+      text-align: center;
+      background-color: blue;
+      border-color: blue;
+
+      .disc {
+        height: 13vh;
+        border-radius: 50%;
+        background-color: red;
+        margin: 8%;
+      }
+    }
+  }
 }
 
 .App-logo {
