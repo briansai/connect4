@@ -1,0 +1,12 @@
+.slot {
+  text-align: center;
+  background-color: blue;
+  border-color: blue;
+
+  .disc {
+    height: 14vh;
+    border-radius: 50%;
+    background-color: red;
+    margin: 8%;
+  }
+}
