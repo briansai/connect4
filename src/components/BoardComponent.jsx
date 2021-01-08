@@ -14,9 +14,13 @@ const BoardComponent = () => {
     <tbody>
       {board.state.map((row, index) => {
         return (
-          <tr key={index} className="row">
+          <tr key={`row-${index}`} className="row">
             {row.map((slot, index) => (
-              <td className="slot" onClick={(e) => handleClick(e, index)}>
+              <td
+                className="slot"
+                key={`${slot}-${index}`}
+                onClick={(e) => handleClick(e, index)}
+              >
                 <div className="disc"></div>
               </td>
             ))}
