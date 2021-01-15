@@ -1,6 +1,5 @@
 import React, { useState, Fragment } from 'react';
 import Game from './components/Game';
-import Board from './classes/Board';
 import './App.scss';
 
 const App = () => {
@@ -12,9 +11,7 @@ const App = () => {
 
   const currentGame = () => {
     do {
-      const board = new Board();
-
-      return <Game board={board} />;
+      return <Game />;
     } while (game);
   };
 

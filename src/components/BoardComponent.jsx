@@ -7,10 +7,16 @@ const BoardComponent = ({
   board,
   setCurrentPlayer,
   setOtherPlayer,
+  setBoard,
 }) => {
   const handleClick = async (e, slotIndex) => {
     console.log(currentPlayer);
-    currentPlayer.setDisc(slotIndex, currentPlayer.state.player, board.state);
+    currentPlayer.setDisc(
+      slotIndex,
+      currentPlayer.state.player,
+      board.state,
+      setBoard
+    );
     setCurrentPlayer(otherPlayer);
     setOtherPlayer(currentPlayer);
     e.preventDefault();
