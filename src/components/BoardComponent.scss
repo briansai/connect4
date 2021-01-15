@@ -3,18 +3,22 @@
   background-color: blue;
   border-color: blue;
 
-  .disc {
+  [class^='disc'] {
     height: 14vh;
     border-radius: 50%;
-    background-color: white;
+    // background-color: white;
     margin: 8%;
   }
 
-  .yellow {
+  .disc-white {
+    background-color: white;
+  }
+
+  .disc-yellow {
     background-color: yellow;
   }
 
-  .red {
+  .disc-red {
     background-color: red;
   }
 }

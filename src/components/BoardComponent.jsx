@@ -10,7 +10,7 @@ const BoardComponent = ({
   setBoard,
 }) => {
   const handleClick = async (e, slotIndex) => {
-    console.log(currentPlayer);
+    e.preventDefault();
     currentPlayer.setDisc(
       slotIndex,
       currentPlayer.state.player,
@@ -19,7 +19,17 @@ const BoardComponent = ({
     );
     setCurrentPlayer(otherPlayer);
     setOtherPlayer(currentPlayer);
-    e.preventDefault();
+  };
+
+  const color = (slot) => {
+    console.log('slot ------>', slot);
+    if (slot === 1) {
+      return 'red';
+    } else if (slot === 2) {
+      return 'yellow';
+    }
+
+    return 'white';
   };
 
   return (
@@ -28,13 +38,14 @@ const BoardComponent = ({
         return (
           <tr key={`row-${index}`} className="row">
             {row.map((slot, index) => {
+              console.log(slot);
               return (
                 <td
                   className="slot"
                   key={`${slot}-${index}`}
                   onClick={(e) => handleClick(e, index)}
                 >
-                  <div className="disc"></div>
+                  <div className={`disc-${color(slot)}`}></div>
                 </td>
               );
             })}
