@@ -1,15 +1,42 @@
-import React from 'react';
+import React, { useState, Fragment } from 'react';
+import Game from './components/Game';
+import Board from './classes/Board';
 import './App.scss';
-import BoardComponent from './components/BoardComponent';
 
-function App() {
+const App = () => {
+  const [game, playGame] = useState(false);
+
+  const handleClick = (play) => {
+    playGame(play);
+  };
+
+  const currentGame = () => {
+    do {
+      const board = new Board();
+
+      return <Game board={board} />;
+    } while (game);
+  };
+
   return (
-    <div className="App">
-      <table className="board">
-        <BoardComponent />
-      </table>
-    </div>
+    <Fragment>
+      {game ? (
+        <div>{currentGame()}</div>
+      ) : (
+        <div className="intro">
+          <div className="play">Would you like to play again?</div>
+          <div className="btn-container">
+            <button className="btn" onClick={() => handleClick(true)}>
+              YES
+            </button>
+            <button className="btn" onClick={() => handleClick(false)}>
+              NO
+            </button>
+          </div>
+        </div>
+      )}
+    </Fragment>
   );
-}
+};
 
 export default App;
