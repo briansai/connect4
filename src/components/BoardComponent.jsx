@@ -14,38 +14,32 @@ const BoardComponent = ({
     currentPlayer.setDisc(
       slotIndex,
       currentPlayer.state.player,
-      board.state,
+      board,
       setBoard
     );
     setCurrentPlayer(otherPlayer);
     setOtherPlayer(currentPlayer);
   };
 
-  const color = (slot) => {
-    console.log('slot ------>', slot);
-    if (slot === 1) {
-      return 'red';
-    } else if (slot === 2) {
-      return 'yellow';
-    }
-
-    return 'white';
+  const color = {
+    0: 'white',
+    1: 'red',
+    2: 'yellow',
   };
 
   return (
     <tbody>
-      {board.state.map((row, index) => {
+      {board.state.map((row, idx) => {
         return (
-          <tr key={`row-${index}`} className="row">
+          <tr key={`row-${idx}`} className="row">
             {row.map((slot, index) => {
-              console.log(slot);
               return (
                 <td
                   className="slot"
                   key={`${slot}-${index}`}
                   onClick={(e) => handleClick(e, index)}
                 >
-                  <div className={`disc-${color(slot)}`}></div>
+                  <div className={`disc-${color[slot]}`}></div>
                 </td>
               );
             })}

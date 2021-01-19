@@ -4,8 +4,8 @@ import Board from '../classes/Board';
 import Players from '../classes/Players';
 
 const Game = () => {
-  const player1 = new Players(1, 'red');
-  const player2 = new Players(2, 'yellow');
+  const player1 = new Players(1);
+  const player2 = new Players(2);
   const [board, setBoard] = useState(new Board());
   const [currentPlayer, setCurrentPlayer] = useState(player1);
   const [otherPlayer, setOtherPlayer] = useState(player2);
