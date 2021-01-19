@@ -24,6 +24,19 @@ export default class Board {
       x++;
     }
 
-    winner && console.log('WINNER-->');
+    winner && console.log('WINNER ROW-->');
+  };
+
+  checkColumn = (board, row, column, player) => {
+    if (row <= board.length - 4) {
+      let winner = true;
+
+      for (let x = row; x <= row + 3; x++) {
+        if (board[x][column] !== player) {
+          winner = false;
+        }
+      }
+      winner && console.log('WINNER COLUMN--->');
+    }
   };
 }
