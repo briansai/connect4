@@ -13,11 +13,21 @@ export default class Board {
   }
 
   checkLastRowDiagonal = (board, row, column, player) => {
+    const checkLowerHalf = row >= 3 && column > board.length - 1 - row;
+    const checkUpperHalf = row < 3 && column > board.length - 1 - row;
     const endRow = board.length - 1;
+    let col = column;
 
-    if (row === endRow && column < 4 && column > 0) {
-      let startRow = column - 1;
+    if (row !== endRow) {
+      for (let x = row; x < endRow; x++) {
+        col--;
+      }
+    }
+
+    if (checkLowerHalf || checkUpperHalf) {
+      let startRow = col - 1;
       let startColumn = 6;
+
       for (let x = startRow; x <= endRow - 3; x++) {
         const four = [];
         let rowIteration = x;
@@ -28,7 +38,7 @@ export default class Board {
           rowIteration++;
           columnIteration--;
         }
-
+        console.log(four);
         const winner = four.every((num) => player === num);
 
         if (winner) {
