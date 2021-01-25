@@ -12,7 +12,12 @@ export default class Board {
     this.state = state;
   }
 
-  checkLastRowDiagonal = (board, row, column, player) => {
+  checkLeftDiagonal = (board, row, column, player) => {
+    this.checkLeftLastRowDiagonal(board, row, column, player);
+    this.checkLeftFirstRowDiagonal(board, row, column, player);
+  };
+
+  checkLeftLastRowDiagonal = (board, row, column, player) => {
     const checkLowerHalf = row >= 3 && column > board.length - 1 - row;
     const checkUpperHalf = row < 3 && column > board.length - 1 - row;
     const endRow = board.length - 1;
@@ -49,7 +54,7 @@ export default class Board {
     }
   };
 
-  checkFirstRowDiagonal = (board, row, column, player) => {
+  checkLeftFirstRowDiagonal = (board, row, column, player) => {
     const checkLowerHalf = row >= 3 && column <= board.length - 1 - row;
     const checkUpperHalf = row < 3 && column <= board.length - 1 - row;
     const endRow = 0;

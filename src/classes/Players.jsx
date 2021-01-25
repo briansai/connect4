@@ -12,8 +12,7 @@ export default class Player {
         b[endRow][column] = player;
         board.checkRow(b, endRow, player);
         board.checkColumn(b, endRow, column, player);
-        board.checkLastRowDiagonal(b, endRow, column, player);
-        board.checkFirstRowDiagonal(b, endRow, column, player);
+        board.checkLeftDiagonal(b, endRow, column, player);
         return;
       } else if (endRow === 0 && b[endRow][column]) {
         console.log('ERROR!!!! NO SPACE!');
