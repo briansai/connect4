@@ -38,7 +38,7 @@ export default class Board {
           rowIteration++;
           columnIteration--;
         }
-        console.log(four);
+
         const winner = four.every((num) => player === num);
 
         if (winner) {
@@ -50,20 +50,30 @@ export default class Board {
   };
 
   checkFirstRowDiagonal = (board, row, column, player) => {
-    let firstRow = 0;
+    const checkLowerHalf = row >= 3 && column <= board.length - 1 - row;
+    const checkUpperHalf = row < 3 && column <= board.length - 1 - row;
+    const endRow = 0;
+    let r = row;
+    let col = column;
 
-    if (column === firstRow && row > 2) {
-      let endRow = row - 3;
-      let startColumn = row;
-      for (let x = firstRow; x <= endRow; x++) {
+    if (checkLowerHalf || checkUpperHalf) {
+      while (col !== 0) {
+        r++;
+        col--;
+      }
+
+      let startRow = r;
+      let startColumn = col;
+
+      for (let x = startRow; x >= endRow + 3; x--) {
         const four = [];
         let rowIteration = x;
         let columnIteration = startColumn;
 
         while (four.length < 4) {
           four.push(board[rowIteration][columnIteration]);
-          rowIteration++;
-          columnIteration--;
+          rowIteration--;
+          columnIteration++;
         }
 
         const winner = four.every((num) => player === num);
@@ -71,7 +81,7 @@ export default class Board {
         if (winner) {
           console.log(`WINNER!! PLAYER ${player} won!`);
         }
-        startColumn--;
+        startColumn++;
       }
     }
   };
